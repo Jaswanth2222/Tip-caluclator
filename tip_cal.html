@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+      integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .bg-container {
+        background-color: #f9fbfe;
+      }
+      .image-style {
+        width: 100%;
+      }
+
+      .tip-cal-heading {
+        margin-top: 10px;
+        color: rgb(42, 42, 179);
+        font-size: 38px;
+        text-align: center;
+        text-transform: capitalize;
+      }
+
+      .form-data-style {
+        text-transform: uppercase;
+        font-size: 12px;
+        color: gray;
+        font-weight: 700;
+      }
+
+      .form-input-style {
+        width: 90%;
+      }
+
+      .bil-text-input-style {
+        text-align: left;
+      }
+
+      .btn-style{
+        color: white;
+        padding: 4px 12px;
+        font-size: 20px;
+        text-transform: uppercase;
+        border-radius: 3px;
+        border: none;
+        letter-spacing: 1px;
+      }
+
+      .clear-btn{
+        background-color: rgb(207, 16, 16);
+        margin: 34px 12px;
+      }
+
+      .cal-btn{
+        background-color: rgb(4, 66, 4);
+        margin: 34px 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <img
+              src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/tip-calculator-img.png"
+              alt=""
+              class="image-style"
+            />
+            <h1 class="tip-cal-heading">tip calucalator</h1>
+          </div>
+          <div class="col-12 col-lg-6 ps-5 pe-5 mt-3">
+            <label for="billAmount" class="form-data-style mb-1"
+              >bill amount</label
+            >
+            <br />
+            <input
+              type="text"
+              id="billAmount"
+              class="form-input-style pt-2 pb-2"
+            />
+          </div>
+
+          <div class="col-12 col-lg-6 ps-5 pe-5 mt-3">
+            <label for="percentageTip" class="form-data-style mb-1"
+              >percentage tip</label
+            >
+            <br />
+            <input
+              type="text"
+              id="percentageTip"
+              class="form-input-style pt-2 pb-2"
+            />
+          </div>
+
+          <div class="col-12 col-lg-6 ps-5 pe-5 mt-3">
+            <label for="tipAmount" class="form-data-style mb-1"
+              >tip amount</label
+            >
+            <br />
+            <input
+              type="text"
+              id="tipAmount"
+              class="form-input-style pt-2 pb-2"
+            />
+          </div>
+
+          <div class="col-12 col-lg-6 ps-5 pe-5 mt-3">
+            <label for="totalAmount" class="form-data-style mb-1">total</label>
+            <br />
+            <input
+              type="text"
+              id="totalAmount"
+              class="form-input-style pt-2 pb-2"
+            />
+          </div>
+
+          <div class="col-12 text-center">
+            <button class="btn-style cal-btn" id="btnStyle" onclick="onCal()">Calculate</button>
+            <button class="btn-style clear-btn" onclick="onClear()">Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        let billAmount = document.getElementById('billAmount');
+        let percentageTip = document.getElementById('percentageTip');
+        let tipAmount = document.getElementById('tipAmount');
+        let totalAmount = document.getElementById('totalAmount');
+        function onCal(){
+            if(billAmount.value === ""){
+                alert("Please enter Bill Amount");
+            }else if(percentageTip.value === ""){
+                alert("Please enter Tip Perentage");
+            }else{
+                tipAmount.value = ((parseInt(billAmount.value)/100) * parseInt(percentageTip.value));
+
+                totalAmount.value = parseInt(tipAmount.value) + parseInt(billAmount.value);
+            }
+
+
+        }
+
+        function onClear(){
+            billAmount.value = "";
+            percentageTip.value = "";
+            tipAmount.value = "";
+            totalAmount.value = "";
+        }
+    </script>
+  </body>
+</html>
